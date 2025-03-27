@@ -1,8 +1,14 @@
+
 def display_menu():
-    print("=== Main Menu ===")
-    print("1. Create Your QR Code")
-    print("2. Search QR Codes")
-    print("0. Exit")
+
+    print("Welcome to the QR Code Generator")
+    print("\n== MAIN MENU ==\n")
+    my_menu_list = ["Create Your QR Code", "Search QR Codes", "Exit"]
+    for option in my_menu_list:
+        if option == "Exit":
+            print("[0]", option)
+        else:
+            print([my_menu_list.index(option) + 1], option)
 
 def main():
     while True:
