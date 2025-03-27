@@ -1,3 +1,4 @@
+import os
 
 def display_menu():
 
@@ -20,7 +21,7 @@ def main():
             # Add functionality for creating a QR code here
         elif choice == "2":
             print("You selected: Search QR Codes")
-            # Add functionality for searching QR codes here
+            os.startfile(r'C:\Users\ziark\Desktop\projects\qr-code-gen\qr-codes')
         elif choice == "0":
             print("Exiting the program. Goodbye!")
             break
