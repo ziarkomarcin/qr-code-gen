@@ -1,4 +1,5 @@
 import os
+import qrcode
 
 def display_menu():
 
@@ -11,6 +12,27 @@ def display_menu():
         else:
             print([my_menu_list.index(option) + 1], option)
 
+def instructions():
+    print("Instructions:")
+    print("You can create a QR code by entering the data you want to encode.")
+    print("The QR code will be saved as a PNG file in qr-codes folder.")
+    print("Before creating a QR code make sure that the names of the files are unique.")
+    print("You can also search for existing QR codes in the specified directory.")
+    print("To exit the program, select 'Exit' from the menu.")
+
+def create_qr():
+    qr=qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=1,
+    )
+    qr.add_data(input("Enter the data to be encoded: "))
+    qr.make(fit=True)
+    img = qr.make_image(fill_color="black", back_color="white")
+    img.save(os.path.join("qr-codes", input("Enter the file name: ") + ".png"))
+    print("QR code generated successfully!")
+
 def main():
     while True:
         display_menu()
@@ -18,7 +40,8 @@ def main():
 
         if choice == "1":
             print("You selected: Create Your QR Code")
-            # Add functionality for creating a QR code here
+            instructions()
+            create_qr()
         elif choice == "2":
             print("You selected: Search QR Codes")
             os.startfile(r'C:\Users\ziark\Desktop\projects\qr-code-gen\qr-codes')
@@ -29,4 +52,4 @@ def main():
             print("Invalid option. Please try again.")
 
 if __name__ == "__main__":
-    main()
+    main() 
